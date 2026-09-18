@@ -1,48 +1,57 @@
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--                    IJAZAH CHAIN — README.md                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
 <div align="center">
 
-<img src="dokumentasi/ijazah_chain.png" alt="Ijazah Chain" width="180" />
+<!-- ═══════════════ HEADER ANIMASI ═══════════════ -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F2027,50:203A43,100:2C5364&height=220&section=header&text=Ijazah%20Chain&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Sistem%20Verifikasi%20Ijazah%20Berbasis%20Blockchain&descAlignY=58&descSize=22" width="100%"/>
 
-# 🔐 IJAZAH CHAIN
+<!-- ═══════════════ BADGE UTAMA ═══════════════ -->
+![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.14-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![PyQt6](https://img.shields.io/badge/PyQt6-6.11-41CD52?style=for-the-badge&logo=qt&logoColor=white)
+![Blockchain](https://img.shields.io/badge/Blockchain-SHA--256-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white)
+![ECDSA](https://img.shields.io/badge/Signature-ECDSA%20P--256-a78bfa?style=for-the-badge&logo=letsencrypt&logoColor=white)
+![SQLite](https://img.shields.io/badge/Storage-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-34d399?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
-### Sistem Verifikasi Ijazah Berbasis Blockchain + ECDSA Digital Signature
+<!-- ═══════════════ BADGE REPO DINAMIS ═══════════════ -->
+![Stars](https://img.shields.io/github/stars/duhemen/ijazah-chain?style=for-the-badge&logo=github&color=yellow)
+![Forks](https://img.shields.io/github/forks/duhemen/ijazah-chain?style=for-the-badge&logo=github&color=blue)
+![Last Commit](https://img.shields.io/github/last-commit/duhemen/ijazah-chain?style=for-the-badge&logo=git&color=purple)
+![License](https://img.shields.io/github/license/duhemen/ijazah-chain?style=for-the-badge&color=green)
+![Repo Size](https://img.shields.io/github/repo-size/duhemen/ijazah-chain?style=for-the-badge&color=orange)
+![Issues](https://img.shields.io/github/issues/duhemen/ijazah-chain?style=for-the-badge&logo=github&color=red)
 
-**Mencegah pemalsuan ijazah dengan teknologi kriptografi modern.**
+<!-- ═══════════════ TAGLINE ═══════════════ -->
+### 🔐 Mencegah Pemalsuan Ijazah dengan Teknologi Kriptografi Modern
 
-[![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.14-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![PyQt6](https://img.shields.io/badge/PyQt6-6.11-41CD52?style=for-the-badge&logo=qt&logoColor=white)](https://www.riverbankcomputing.com/software/pyqt/)
-[![License](https://img.shields.io/badge/License-MIT-00f0ff?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0.1-a78bfa?style=for-the-badge)](https://github.com/your-username/ijazah-chain/releases)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey?style=for-the-badge)](https://github.com/your-username/ijazah-chain)
+Sistem verifikasi ijazah berbasis **blockchain** yang dirancang untuk memenuhi standar
+**transparansi**, **integritas**, dan **akuntabilitas** tingkat enterprise.
+Setiap ijazah dikunci dengan **rantai kriptografi SHA-256** dan ditandatangani
+secara digital menggunakan **ECDSA P-256** — memastikan keaslian yang tidak dapat
+dimanipulasi oleh pihak manapun.
 
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-34d399?style=flat-square)]()
-[![Blockchain](https://img.shields.io/badge/Blockchain-SHA--256-00f0ff?style=flat-square)]()
-[![Signature](https://img.shields.io/badge/Signature-ECDSA%20P--256-a78bfa?style=flat-square)]()
-[![Database](https://img.shields.io/badge/Storage-SQLite-003B57?style=flat-square&logo=sqlite)]()
-[![Tests](https://img.shields.io/badge/Tests-Passing-34d399?style=flat-square)]()
+<br/>
 
-**Dikembangkan dengan ❤️ untuk integritas akademik Indonesia**
-
-[📖 Dokumentasi](#-user-guide) •
-[🚀 Quick Start](#-quick-start) •
-[🏗️ Arsitektur](#-arsitektur) •
-[🗺️ Roadmap](#-roadmap) •
-[🐛 Report Bug](issues)
+[📖 Dokumentasi](#-user-guide) · [🚀 Quick Start](#-quick-start) · [🏗️ Arsitektur](#️-arsitektur-sistem) · [🗺️ Roadmap](#️-roadmap) · [🐛 Laporkan Bug](https://github.com/duhemen/ijazah-chain/issues)
 
 </div>
 
 ---
 
-## 📖 Daftar Isi
+## 📌 Daftar Isi
+
+<details open>
+<summary>Klik untuk melihat / menyembunyikan</summary>
 
 - [✨ Fitur Utama](#-fitur-utama)
 - [🎯 Mengapa Ijazah Chain?](#-mengapa-ijazah-chain)
 - [🏗️ Arsitektur Sistem](#️-arsitektur-sistem)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📦 Instalasi](#-instalasi)
-  - [Prasyarat](#prasyarat)
-  - [Metode 1: Instalasi Manual (Development)](#metode-1-instalasi-manual-development)
-  - [Metode 2: Menjalankan dari EXE (Production)](#metode-2-menjalankan-dari-exe-production)
+- [🧰 Tech Stack](#-tech-stack)
+- [⚡ Instalasi Cepat](#-instalasi-cepat)
 - [🚀 Quick Start](#-quick-start)
 - [📸 User Guide](#-user-guide)
   - [1. Menerbitkan Ijazah Baru](#1-menerbitkan-ijazah-baru)
@@ -54,12 +63,12 @@
 - [🔌 API Reference](#-api-reference)
 - [⚙️ Konfigurasi](#️-konfigurasi)
 - [🧪 Testing](#-testing)
-- [🔨 Build ke EXE](#-build-ke-exe)
 - [🗺️ Roadmap](#️-roadmap)
-- [🤝 Contributing](#-contributing)
 - [❓ FAQ](#-faq)
-- [📄 License](#-license)
+- [📄 Lisensi](#-lisensi)
 - [👨‍💻 Credits](#-credits)
+
+</details>
 
 ---
 
@@ -67,63 +76,68 @@
 
 <table>
 <tr>
-<td width="50%">
+<td width="50%" valign="top">
 
-### 🔐 Keamanan Tingkat Tinggi
-- **SHA-256 hashing** untuk setiap blok
-- **ECDSA P-256 digital signature** untuk otentikasi
-- **Immutable blockchain** — data tidak bisa diubah
-- **API key authentication** per universitas
-- **Audit log** — semua akses terekam
+### 🔒 Keamanan & Integritas
+- **Immutable Blockchain Ledger** — Setiap blok ijazah dikunci dengan sidik jari kriptografi SHA-256 berantai
+- **ECDSA P-256 Digital Signature** — Tanda tangan kriptografi pada setiap blok
+- **API Key Authentication** — Akses terbatas per universitas
+- **Audit Log** — Semua aktivitas terekam (login, issue, audit, backup)
+- **Rate Limiting** — Perlindungan dari abuse endpoint publik
 
 </td>
-<td width="50%">
+<td width="50%" valign="top">
 
-### 🎨 Antarmuka Modern
-- **Desktop app (PyQt6)** dengan dark premium theme
-- **Web dashboard** dengan aurora animated background
-- **Real-time charts** — pie, bar, & activity timeline
-- **Responsive design** — desktop, tablet, mobile
+### 📊 Analitik & Pelaporan
+- **Dashboard Eksekutif** — Statistik real-time dengan Chart.js
+- **Pie Chart Fakultas & Prodi** — Distribusi visual
+- **Tren per Tahun Akademik** — Bar chart interaktif
+- **Activity Timeline** — Feed penerbitan ijazah terbaru
+- **Export CSV** — Download data dengan filter aktif
 
 </td>
 </tr>
 <tr>
-<td>
+<td width="50%" valign="top">
 
 ### 📜 Ijazah Digital
-- **3 template** (Klasik, Modern, Minimalis)
-- **QR code** tertanam di setiap ijazah
-- **Export PDF** ukuran A4 landscape
-- **Auto-verifikasi** via scan QR
+- **3 Template Premium** — Klasik, Modern, Minimalis
+- **QR Code Terintegrasi** — Tertanam di setiap ijazah
+- **Export PDF A4 Landscape** — Siap cetak profesional
+- **Auto-verifikasi QR** — Scan via HP, hasil dalam 3 detik
+- **Multi-bahasa** — Format tanggal Indonesia
 
 </td>
-<td>
+<td width="50%" valign="top">
 
 ### 🌐 Multi-Platform
-- **Server terpusat** (FastAPI) atau **mode lokal** (offline)
-- **Verifikasi publik** tanpa login
-- **QR scanner web** — buka dari HP
-- **Batch import** dari CSV/Excel
+- **Server Terpusat** — FastAPI + SQLite, multi-user
+- **Mode Lokal (Offline)** — Untuk single-user
+- **Verifikasi Publik** — Tanpa login, akses dari mana saja
+- **QR Scanner Web** — Buka dari HP, tanpa install app
+- **Batch Import** — Upload CSV/Excel ratusan ijazah
 
 </td>
 </tr>
 <tr>
-<td>
+<td width="50%" valign="top">
 
 ### 🛡️ Backup & Recovery
-- **Auto-backup harian** (jam 02:00)
-- **Retention 30 hari** dengan rotasi otomatis
-- **Manual backup** via API
-- **SQLite backup API** (aman saat DB aktif)
+- **Auto-Backup Harian** — Setiap jam 02:00 pagi
+- **Retention 30 Hari** — Rotasi otomatis backup lama
+- **Manual Backup API** — Trigger kapan saja
+- **SQLite Backup API** — Aman saat DB sedang aktif
+- **Audit Trail** — Rekam jejak semua perubahan
 
 </td>
-<td>
+<td width="50%" valign="top">
 
-### 📊 Analitik Komprehensif
-- Distribusi per **fakultas**
-- Distribusi per **program studi**
-- Tren per **tahun akademik**
-- **Ranking** institusi
+### 🎨 User Experience
+- **Dark Premium Theme** — Antarmuka PyQt6 modern
+- **Aurora Animated Background** — Web dashboard memukau
+- **Command Palette** — Ctrl+K untuk navigasi cepat
+- **Toast Notifications** — Notifikasi slide-in
+- **Responsive Design** — Desktop, tablet, mobile
 
 </td>
 </tr>
@@ -155,169 +169,96 @@
 
 ## 🏗️ Arsitektur Sistem
 
+> Menerapkan prinsip **Separation of Concerns** — client, server, dan verifier terpisah.
+
+```mermaid
+graph TB
+    subgraph SERVER["🖥️ SERVER (FastAPI + SQLite)"]
+        A[Blockchain<br/>Ledger v4]
+        B[ECDSA<br/>Signing Engine]
+        C[Audit Log]
+        D[REST API<br/>Endpoints]
+        E[Static Content]
+        
+        A <--> B
+        A <--> C
+        D <--> A
+        D <--> B
+        E --> D
+    end
+    
+    subgraph CLIENT["💻 CLIENT PyQt6"]
+        F[Issue Ijazah]
+        G[Cetak PDF]
+        H[Analitik]
+        I[Import Massal]
+    end
+    
+    subgraph VERIFIER["🌐 VERIFIER"]
+        J[Scan QR]
+        K[Cek Hash/NIM]
+    end
+    
+    D <-->|HTTP/REST| F
+    D <-->|HTTP/REST| G
+    D <-->|HTTP/REST| H
+    D <-->|HTTP/REST| I
+    D <-->|HTTP/REST| J
+    D <-->|HTTP/REST| K
+    
+    style SERVER fill:#1a1a2e,stroke:#00f0ff,color:#fff
+    style CLIENT fill:#1a1a2e,stroke:#a78bfa,color:#fff
+    style VERIFIER fill:#1a1a2e,stroke:#34d399,color:#fff
 ```
-┌───────────────────────────────────────────────────────────────────┐
-│                     SERVER (FastAPI + SQLite)                     │
-│                                                                   │
-│  ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐  │
-│  │   Blockchain    │   │  ECDSA Signing  │   │   Audit Log     │  │
-│  │   Ledger (v4)   │◄──┤  (Private Key)  │   │   (SQLite)      │  │
-│  │                 │   │                 │   │                 │  │
-│  │ • Genesis Block │   │  secp256r1      │   │  • Login        │  │
-│  │ • Block 1,2,3.. │   │  SHA-256        │   │  • Issue        │  │
-│  └─────────────────┘   └─────────────────┘   │  • Audit        │  │
-│                                                │  • Backup       │  │
-│  ┌─────────────────────────────────────────┐  └─────────────────┘  │
-│  │  REST API Endpoints                     │                        │
-│  │  • POST /api/v1/certificates (issue)    │                        │
-│  │  • GET  /api/v1/verify/{hash}           │                        │
-│  │  • GET  /api/v1/verify-nim/{nim}        │                        │
-│  │  • GET  /api/v1/audit                   │                        │
-│  │  • POST /api/v1/admin/login             │                        │
-│  └─────────────────────────────────────────┘                        │
-│                                                                   │
-│  ┌─────────────────────────────────────────┐                        │
-│  │  Static Content                         │                        │
-│  │  • /dashboard → Admin Web UI            │                        │
-│  │  • /verify    → Public Verifier         │                        │
-│  └─────────────────────────────────────────┘                        │
-└──────────────────────┬────────────────────────────────────────────┘
-                       │ HTTP/REST (JSON)
-                       │
-       ┌───────────────┼───────────────┐
-       │               │               │
-       ▼               ▼               ▼
-┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-│  CLIENT     │ │  CLIENT     │ │  VERIFIER   │
-│  PyQt6 UGM  │ │  PyQt6 UI   │ │  Browser    │
-│             │ │             │ │             │
-│ • Issue     │ │ • Issue     │ │ • Scan QR   │
-│ • PDF       │ │ • PDF       │ │ • Cek Hash  │
-│ • Analytics │ │ • Analytics │ │ • Cek NIM   │
-│ • Import    │ │ • Import    │ │             │
-└─────────────┘ └─────────────┘ └─────────────┘
-```
+
+| Layer | Tanggung Jawab |
+|---|---|
+| **Server** | REST API, blockchain ledger, ECDSA signing, audit log, auto-backup |
+| **Client (PyQt6)** | Issue ijazah, preview 3 template, export PDF, batch import |
+| **Verifier (Web)** | Scan QR via kamera HP, cek hash/NIM, tanpa login |
 
 ---
 
-## 🛠️ Tech Stack
+## 🧰 Tech Stack
 
-<table>
-<tr>
-<td><b>Layer</b></td>
-<td><b>Teknologi</b></td>
-<td><b>Fungsi</b></td>
-</tr>
-<tr>
-<td>🎨 <b>Client UI</b></td>
-<td>PyQt6, ReportLab, qrcode</td>
-<td>Desktop app untuk penerbitan ijazah</td>
-</tr>
-<tr>
-<td>🌐 <b>Server</b></td>
-<td>FastAPI, Uvicorn, Pydantic</td>
-<td>REST API & business logic</td>
-</tr>
-<tr>
-<td>💾 <b>Storage</b></td>
-<td>SQLite 3</td>
-<td>Blockchain ledger & audit log</td>
-</tr>
-<tr>
-<td>🔐 <b>Cryptography</b></td>
-<td>cryptography (ECDSA), hashlib (SHA-256)</td>
-<td>Signature & hashing</td>
-</tr>
-<tr>
-<td>🛡️ <b>Security</b></td>
-<td>slowapi, API key auth</td>
-<td>Rate limiting & access control</td>
-</tr>
-<tr>
-<td>⏰ <b>Scheduler</b></td>
-<td>APScheduler</td>
-<td>Auto-backup harian</td>
-</tr>
-<tr>
-<td>📊 <b>Web UI</b></td>
-<td>HTML5, CSS3, Chart.js, jsQR</td>
-<td>Dashboard admin & verifier</td>
-</tr>
-</table>
+<div align="center">
+
+| Komponen | Teknologi |
+|:---:|:---:|
+| **Bahasa** | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) |
+| **Server** | ![FastAPI](https://img.shields.io/badge/-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Uvicorn](https://img.shields.io/badge/-Uvicorn-499848?style=flat-square&logo=gunicorn&logoColor=white) |
+| **Client UI** | ![PyQt6](https://img.shields.io/badge/-PyQt6-41CD52?style=flat-square&logo=qt&logoColor=white) |
+| **PDF & QR** | ![ReportLab](https://img.shields.io/badge/-ReportLab-orange?style=flat-square) ![qrcode](https://img.shields.io/badge/-qrcode-black?style=flat-square) |
+| **Database** | ![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) |
+| **Kriptografi** | ![SHA-256](https://img.shields.io/badge/-SHA--256-F7931A?style=flat-square&logo=bitcoin&logoColor=white) ![ECDSA](https://img.shields.io/badge/-ECDSA-a78bfa?style=flat-square) |
+| **Web UI** | ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![Chart.js](https://img.shields.io/badge/-Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white) |
+
+</div>
 
 ---
 
-## 📦 Instalasi
+## ⚡ Instalasi Cepat
 
-### Prasyarat
-
-| Software | Versi Minimum | Keterangan |
-|---|---|---|
-| **Python** | 3.11 / 3.12 / 3.14 | ⚠️ Python 3.11–3.12 **sangat direkomendasikan** |
-| **pip** | 22.0+ | Package installer |
-| **Git** | 2.30+ | Version control (opsional) |
-| **Windows** | 10/11 | Atau Linux/macOS |
-
-> ⚠️ **Catatan**: Python 3.14 bekerja tapi beberapa library mungkin butuh compiler C. Sangat direkomendasikan Python 3.12.
-
----
-
-### Metode 1: Instalasi Manual (Development)
-
-#### 1️⃣ Clone Repository
+> ⚠️ **Prasyarat**: Python 3.11 / 3.12 / 3.14 — **Python 3.11–3.12 sangat direkomendasikan** untuk kompatibilitas library.
 
 ```bash
+# 1. Clone repositori
 git clone https://github.com/duhemen/ijazah-chain.git
 cd ijazah-chain
-```
 
-Atau ekstrak ZIP ke `D:\ijazah_chain\`.
-
-#### 2️⃣ Buat Virtual Environment
-
-**Windows (PowerShell):**
-```powershell
+# 2. Buat virtual environment
 python -m venv ijazah_chain
-.\ijazah_chain\Scripts\Activate.ps1
-```
+ijazah_chain\Scripts\activate          # Windows
+# source ijazah_chain/bin/activate     # Linux/Mac
 
-**Linux/macOS:**
-```bash
-python3 -m venv ijazah_chain
-source ijazah_chain/bin/activate
-```
-
-#### 3️⃣ Install Dependencies
-
-```bash
-python -m pip install --upgrade pip
+# 3. Install dependencies
 pip install -r requirements.txt
-```
 
-**Jika ada library yang gagal install** (biasanya `cryptography`, `slowapi`, `opencv` di Python 3.14):
-```bash
-# Install yang berhasil dulu
-pip install fastapi uvicorn pydantic httpx python-multipart
-pip install PyQt6 qrcode pillow reportlab
-pip install cryptography slowapi apscheduler
-```
-
-#### 4️⃣ Verifikasi Instalasi
-
-```bash
-python -c "import fastapi, PyQt6, cryptography, slowapi, apscheduler; print('✅ Semua library OK')"
-```
-
-#### 5️⃣ Jalankan Server
-
-**Terminal 1:**
-```bash
+# 4. Jalankan server (Terminal 1)
 python -m uvicorn server.main:app --host 0.0.0.0 --port 8000 --reload
-```
 
-Atau lebih singkat:
-```bash
-python run_server.py
+# 5. Jalankan client (Terminal 2 — baru)
+python -m app.main
 ```
 
 **Output yang diharapkan:**
@@ -328,84 +269,32 @@ INFO:     Uvicorn running on http://0.0.0.0:8000
 INFO:     Application startup complete.
 ```
 
-#### 6️⃣ Jalankan Client
-
-**Terminal 2 (baru):**
-```bash
-cd D:\ijazah_chain
-.\ijazah_chain\Scripts\Activate.ps1
-python -m app.main
-```
-
-Atau:
-```bash
-python run_client.py
-```
-
-#### 7️⃣ Buka Dashboard
-
-- 🖥️ **Dashboard Admin**: http://localhost:8000/dashboard
-  - Login: `admin` / `admin123`
+Buka browser:
+- 🖥️ **Dashboard Admin**: http://localhost:8000/dashboard (login: `admin` / `admin123`)
 - 🔍 **Verifikasi Publik**: http://localhost:8000/verify
 - 📖 **API Docs**: http://localhost:8000/docs
-
----
-
-### Metode 2: Menjalankan dari EXE (Production)
-
-Jika Anda sudah punya file `IjazahChainServer.exe` dan `IjazahChainClient.exe`:
-
-#### 1️⃣ Extract
-
-```powershell
-# Extract ke folder mana saja
-Expand-Archive IjazahChainServer.zip -DestinationPath D:\IjazahChain
-Expand-Archive IjazahChainClient.zip -DestinationPath D:\IjazahChain
-```
-
-#### 2️⃣ Jalankan Server
-
-```powershell
-cd D:\IjazahChain\IjazahChainServer
-.\IjazahChainServer.exe
-```
-
-✅ Browser otomatis terbuka ke dashboard.
-
-#### 3️⃣ Jalankan Client
-
-```powershell
-cd D:\IjazahChain\IjazahChainClient
-.\IjazahChainClient.exe
-```
-
-✅ Tidak perlu install Python!
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# 1. Clone & masuk folder
+# Clone
 git clone https://github.com/duhemen/ijazah-chain.git
 cd ijazah-chain
 
-# 2. Buat venv & aktifkan
+# Setup
 python -m venv ijazah_chain
-.\ijazah_chain\Scripts\Activate.ps1     # Windows
-# source ijazah_chain/bin/activate      # Linux/Mac
-
-# 3. Install dependencies
+ijazah_chain\Scripts\activate
 pip install -r requirements.txt
 
-# 4. Jalankan server (terminal 1)
+# Jalankan server (Terminal 1)
 python -m uvicorn server.main:app --port 8000 --reload
 
-# 5. Jalankan client (terminal 2)
+# Jalankan client (Terminal 2)
 python -m app.main
 
-# 6. Buka browser
-# http://localhost:8000/dashboard
+# Buka browser: http://localhost:8000/dashboard
 ```
 
 **Dalam 5 menit Anda sudah bisa menerbitkan ijazah digital pertama!** 🎉
@@ -754,55 +643,6 @@ curl http://localhost:8000/api/v1/verify/<hash>
 
 ---
 
-## 🔨 Build ke EXE
-
-### Otomatis (Recommended)
-
-```bash
-# Windows
-build_all.bat
-```
-
-Script ini akan:
-1. Cek & install PyInstaller
-2. Build server → `dist/IjazahChainServer/IjazahChainServer.exe`
-3. Build client → `dist/IjazahChainClient/IjazahChainClient.exe`
-
-**Durasi**: 5-10 menit.
-
-### Manual
-
-```bash
-pip install pyinstaller
-
-# Build server
-pyinstaller build_server.spec --clean --noconfirm
-
-# Build client
-pyinstaller build_client.spec --clean --noconfirm
-```
-
-### Hasil Build
-
-```
-dist/
-├── IjazahChainServer/
-│   ├── IjazahChainServer.exe    ← 200 MB
-│   ├── server/static/*.html
-│   └── ... (library)
-└── IjazahChainClient/
-    ├── IjazahChainClient.exe    ← 180 MB
-    └── ... (library)
-```
-
-### Distribusi
-
-1. **Zip** folder `dist/IjazahChainServer/` → `IjazahChainServer.zip`
-2. **Zip** folder `dist/IjazahChainClient/` → `IjazahChainClient.zip`
-3. Bagikan ke user → user tinggal extract & double-click `.exe`
-
----
-
 ## 🗺️ Roadmap
 
 ### ✅ v2.0.1 — Current (Q3 2026)
@@ -834,51 +674,6 @@ dist/
 
 ---
 
-## 🤝 Contributing
-
-Kami menerima kontribusi! Berikut caranya:
-
-### Development Setup
-
-```bash
-git clone https://github.com/duhemen/ijazah-chain.git
-cd ijazah-chain
-python -m venv ijazah_chain
-.\ijazah_chain\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-### Workflow
-
-1. **Fork** repository
-2. **Buat branch** fitur: `git checkout -b fitur/nama-fitur`
-3. **Commit** perubahan: `git commit -m 'feat: tambah fitur X'`
-4. **Push** ke branch: `git push origin fitur/nama-fitur`
-5. **Buat Pull Request**
-
-### Commit Convention
-
-```
-feat: menambah fitur baru
-fix: memperbaiki bug
-docs: update dokumentasi
-style: format kode
-refactor: refactoring kode
-test: menambah test
-chore: update build/deps
-```
-
-### Area Kontribusi
-
-- 🐛 **Bug fixes** — lihat [issues](issues)
-- 📚 **Dokumentasi** — perbaiki typo, tambah contoh
-- 🌐 **Terjemahan** — Bahasa Inggris, daerah
-- 🎨 **UI/UX** — redesign, animasi
-- 🔐 **Security** — audit, penetration testing
-- ⚡ **Performance** — optimasi query, caching
-
----
-
 ## ❓ FAQ
 
 <details>
@@ -901,7 +696,6 @@ Server FastAPI yang sudah di-deploy biasanya memiliki uptime tinggi. Untuk devel
 <summary><b>Apakah bisa diakses dari HP?</b></summary>
 
 Bisa. Buka `http://<IP-PC>:8000/verify` di browser HP (pastikan WiFi sama). Untuk akses dari luar jaringan, gunakan **ngrok** atau deploy ke cloud.
-
 </details>
 
 <details>
@@ -911,14 +705,12 @@ Untuk **mode lokal**: gratis. Untuk **production**:
 - VPS: Rp 50.000 – 200.000/bulan (Railway, Render, DigitalOcean)
 - Domain: Rp 150.000/tahun (opsional)
 - SSL: gratis (Let's Encrypt)
-
 </details>
 
 <details>
 <summary><b>Apakah compatible dengan sistem akademik (SIAKAD)?</b></summary>
 
 Ya, via **REST API**. SIAKAD bisa POST ke `/api/v1/certificates` untuk menerbitkan ijazah otomatis. Butuh API key universitas.
-
 </details>
 
 <details>
@@ -928,14 +720,13 @@ Private key tersimpan di `server/keys/server_private.pem`. **WAJIB backup!** Jik
 - Ijazah lama masih bisa diverifikasi (hash valid)
 - Tapi signature tidak bisa diverifikasi lagi
 - Solusi: simpan private key di **secure vault** atau **HSM**
-
 </details>
 
 ---
 
-## 📄 License
+## 📄 Lisensi
 
-Project ini dilisensikan di bawah **MIT License** — bebas digunakan untuk keperluan komersial maupun non-komersial.
+Proyek ini dilisensikan di bawah **MIT License** — lihat berkas [LICENSE](LICENSE) untuk detail.
 
 ```
 MIT License
@@ -966,7 +757,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ### Dibuat dengan ❤️ di Indonesia
 
 **Project Lead & Developer**
-- 👨‍💻 **Emen** ([@emen](https://github.com/duhemen))
+- 👨‍💻 **Emen** ([@duhemen](https://github.com/duhemen))
 
 **Dikembangkan dengan bantuan AI**
 - 🤖 **DeepSeek** — Architect & Code Reviewer
@@ -985,13 +776,18 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 <div align="center">
 
-### 🌟 Jika project ini bermanfaat, berikan bintang! 🌟
+### 🌟 Jika proyek ini bermanfaat, berikan bintang! 🌟
 
-[![Star History Chart](https://api.star-history.com/svg?repos=duhemen/ijazah-chain&type=Date)](https://star-history.com/#duhemen/ijazah-chain&Date)
+[![Star](https://img.shields.io/github/stars/duhemen/ijazah-chain?style=social)](https://github.com/duhemen/ijazah-chain/stargazers)
+[![Fork](https://img.shields.io/github/forks/duhemen/ijazah-chain?style=social)](https://github.com/duhemen/ijazah-chain/network/members)
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2C5364,50:203A43,100:0F2027&height=120&section=footer" width="100%"/>
 
 **© 2026 Ijazah Chain — Decentralized Academic Integrity Network**
 
-[Mulai ⬆️](#-ijazah-chain) • [Laporkan Bug](issues) • [Diskusi](discussions)
+[Mulai ⬆️](#-ijazah-chain) • [Laporkan Bug](https://github.com/duhemen/ijazah-chain/issues) • [Diskusi](https://github.com/duhemen/ijazah-chain/discussions)
 
 </div>
 

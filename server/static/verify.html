@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verifikasi Ijazah — Ijazah Chain</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<style>
+:root {
+  --bg-0: #08080b;
+  --bg-1: #0f0f14;
+  --card: rgba(22, 22, 28, 0.72);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hi: rgba(255, 255, 255, 0.14);
+  --text: #e8e8ee;
+  --muted: #8a8a99;
+  --cyan: #00f0ff;
+  --purple: #a78bfa;
+  --green: #34d399;
+  --red: #ff3860;
+  --amber: #fbbf24;
+  --grad-primary: linear-gradient(135deg, #00f0ff 0%, #a78bfa 100%);
+  --grad-success: linear-gradient(135deg, #34d399 0%, #00f0ff 100%);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-0);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+.aurora {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+}
+.aurora::before, .aurora::after {
+  content: ''; position: absolute;
+  width: 60vw; height: 60vw; border-radius: 50%;
+  filter: blur(120px); opacity: 0.3; will-change: transform;
+}
+.aurora::before {
+  background: radial-gradient(circle, #00f0ff 0%, transparent 70%);
+  top: -20%; left: -10%;
+  animation: floatA 22s ease-in-out infinite alternate;
+}
+.aurora::after {
+  background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+  bottom: -30%; right: -15%;
+  animation: floatB 26s ease-in-out infinite alternate;
+}
+@keyframes floatA { to { transform: translate(15vw, 20vh) scale(1.15); } }
+@keyframes floatB { to { transform: translate(-20vw, -15vh) scale(0.95); } }
+
+header {
+  padding: 20px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: rgba(10, 10, 14, 0.7);
+  backdrop-filter: blur(20px);
+  position: sticky; top: 0; z-index: 100;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px; font-weight: 700;
+}
+.brand-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.4);
+}
+.brand-text {
+  background: var(--grad-primary);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+.brand small {
+  color: var(--muted); font-size: 11px; font-weight: 400;
+  letter-spacing: 0; margin-left: 8px;
+  -webkit-text-fill-color: var(--muted);
+}
+.link-admin {
+  color: var(--muted); text-decoration: none; font-size: 13px;
+  border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px;
+  transition: all 0.2s;
+}
+.link-admin:hover { color: var(--cyan); border-color: var(--cyan); }
+
+.container {
+  max-width: 900px; margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.hero {
+  text-align: center; margin-bottom: 40px;
+}
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 42px; font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+  background: var(--grad-primary);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  color: var(--muted); font-size: 15px; max-width: 600px;
+  margin: 0 auto; line-height: 1.6;
+}
+
+.tabs {
+  display: flex; gap: 6px; margin-bottom: 24px;
+  background: rgba(20, 20, 26, 0.6);
+  padding: 6px; border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+.tab {
+  flex: 1; padding: 12px 20px;
+  background: transparent; border: none;
+  color: var(--muted); font-size: 13px; font-weight: 600;
+  cursor: pointer; border-radius: 8px;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.tab:hover { color: var(--text); background: rgba(255, 255, 255, 0.03); }
+.tab.active {
+  background: var(--grad-primary);
+  color: #0a0a0f;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.25);
+}
+
+.panel {
+  background: var(--card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+.panel h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px;
+}
+.panel .sub {
+  color: var(--muted); font-size: 13px; margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex; gap: 10px; margin-bottom: 16px;
+}
+input[type="text"] {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.2s;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--cyan);
+  background: rgba(0, 240, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.1);
+}
+
+.btn {
+  background: var(--grad-primary);
+  color: #0a0a0f;
+  border: none; border-radius: 10px;
+  padding: 14px 28px;
+  font-size: 13px; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+  display: flex; align-items: center; gap: 8px;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(0, 240, 255, 0.35); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-block { width: 100%; justify-content: center; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer; font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 8px;
+  justify-content: center;
+}
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* QR Scanner */
+#qrReader {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  display: none;
+}
+#qrReader video, #qrReader canvas {
+  width: 100%; height: 100%; display: block; object-fit: cover;
+}
+.scanner-frame {
+  position: absolute; inset: 15%;
+  border: 3px solid var(--cyan);
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+.scan-line {
+  position: absolute; left: 15%; right: 15%; top: 15%;
+  height: 2px; background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: scan 2s linear infinite;
+}
+@keyframes scan {
+  0%, 100% { top: 15%; }
+  50% { top: 85%; }
+}
+
+/* Result */
+#result { margin-top: 24px; display: none; }
+.result-card {
+  background: rgba(20, 20, 26, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+.result-card.valid { border-color: var(--green); box-shadow: 0 0 40px rgba(52, 211, 153, 0.15); }
+.result-card.invalid { border-color: var(--red); box-shadow: 0 0 40px rgba(255, 56, 96, 0.15); }
+
+.result-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.result-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; flex-shrink: 0;
+}
+.result-icon.valid { background: rgba(52, 211, 153, 0.15); }
+.result-icon.invalid { background: rgba(255, 56, 96, 0.15); }
+.result-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; }
+.result-title.valid { color: var(--green); }
+.result-title.invalid { color: var(--red); }
+.result-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.dl-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 20px;
+  font-size: 13px;
+}
+.dl-grid dt {
+  color: var(--muted); font-weight: 600; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding-top: 3px;
+}
+.dl-grid dd {
+  color: var(--text);
+  word-break: break-word;
+  line-height: 1.5;
+}
+.dl-grid dd.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: rgba(0, 240, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.badge-green { background: rgba(52,211,153,0.15); color: var(--green); }
+.badge-red { background: rgba(255,56,96,0.15); color: var(--red); }
+.badge-cyan { background: rgba(0,240,255,0.15); color: var(--cyan); }
+
+/* Stats */
+.stats-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 24px;
+}
+.stat-mini {
+  background: rgba(20, 20, 26, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-mini .v {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--cyan);
+}
+.stat-mini .l {
+  font-size: 11px; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.toast {
+  position: fixed; top: 20px; right: 20px;
+  background: rgba(20, 20, 26, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 13px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  transform: translateX(120%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10000; max-width: 380px;
+}
+.toast.show { transform: translateX(0); }
+.toast.error { border-color: var(--red); }
+.toast.success { border-color: var(--green); }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; }
+  .dl-grid { grid-template-columns: 1fr; gap: 6px 0; }
+  .dl-grid dt { padding-top: 8px; }
+  .tabs { font-size: 12px; }
+  .tab { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+
+<header>
+  <div class="brand">
+    <div class="brand-icon">🔍</div>
+    <div>
+      <span class="brand-text">VERIFIKASI IJAZAH</span>
+      <small>Ijazah Chain</small>
+    </div>
+  </div>
+  <a class="link-admin" href="/dashboard">Admin →</a>
+</header>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>Verifikasi Ijazah</h1>
+    <p>Cek keaslian ijazah secara instan. Scan QR pada ijazah fisik, atau masukkan hash/NIM untuk verifikasi.</p>
+  </div>
+
+  <!-- Statistik publik -->
+  <div class="stats-row" id="statsRow">
+    <div class="stat-mini"><div class="v" id="statTotal">—</div><div class="l">Total Ijazah</div></div>
+    <div class="stat-mini"><div class="v" id="statInstitusi">—</div><div class="l">Institusi</div></div>
+    <div class="stat-mini"><div class="v" id="statFakultas">—</div><div class="l">Fakultas</div></div>
+    <div class="stat-mini"><div class="v" id="statProdi">—</div><div class="l">Prodi</div></div>
+  </div>
+
+  <!-- Tab navigation -->
+  <div class="tabs">
+    <button class="tab active" data-panel="panel-scan">📷 Scan QR</button>
+    <button class="tab" data-panel="panel-hash">🔐 Cek Hash</button>
+    <button class="tab" data-panel="panel-nim">🎓 Cek NIM</button>
+  </div>
+
+  <!-- Panel 1: Scan QR -->
+  <div class="panel" id="panel-scan">
+    <h2>📷 Scan QR Code</h2>
+    <p class="sub">Arahkan kamera ke QR code pada ijazah. Pastikan pencahayaan cukup.</p>
+    <div id="qrReader">
+      <video id="video" playsinline></video>
+      <canvas id="canvas" style="display:none"></canvas>
+      <div class="scanner-frame"></div>
+      <div class="scan-line"></div>
+    </div>
+    <button class="btn btn-block" id="btnStartScan" style="margin-top:16px">
+      <span>📷 Mulai Scan QR</span>
+    </button>
+    <button class="btn-ghost" id="btnStopScan" style="margin-top:10px; width:100%; display:none">
+      ⏹ Hentikan Kamera
+    </button>
+  </div>
+
+  <!-- Panel 2: Cek Hash -->
+  <div class="panel" id="panel-hash" style="display:none">
+    <h2>🔐 Cek Berdasarkan Hash</h2>
+    <p class="sub">Masukkan hash blok (64 karakter hex) yang tertera di ijazah.</p>
+    <div class="input-group">
+      <input type="text" id="inputHash" placeholder="Contoh: 3155264a598ad..." autocomplete="off" />
+      <button class="btn" id="btnVerifyHash">Cek</button>
+    </div>
+  </div>
+
+  <!-- Panel 3: Cek NIM -->
+  <div class="panel" id="panel-nim" style="display:none">
+    <h2>🎓 Cek Berdasarkan NIM</h2>
+    <p class="sub">Masukkan Nomor Induk Mahasiswa untuk mencari ijazah terkait.</p>
+    <div class="input-group">
+      <input type="text" id="inputNim" placeholder="Contoh: 21/123456/TK/78901" autocomplete="off" />
+      <button class="btn" id="btnVerifyNim">Cari</button>
+    </div>
+  </div>
+
+  <!-- Hasil -->
+  <div id="result"></div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = window.location.origin;
+let currentStream = null;
+let scanInterval = null;
+let lastScanned = "";
+
+const $ = id => document.getElementById(id);
+
+function toast(msg, type = "info") {
+  const el = $("toast");
+  el.textContent = msg;
+  el.className = "toast " + type;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 3500);
+}
+
+/* ============================================================
+   STATISTIK PUBLIK
+============================================================ */
+async function loadStats() {
+  try {
+    const r = await fetch(API + "/api/v1/public/stats");
+    const s = await r.json();
+    $("statTotal").textContent = s.total_certificates;
+    $("statInstitusi").textContent = s.total_institusi;
+    $("statFakultas").textContent = s.total_fakultas;
+    $("statProdi").textContent = s.total_prodi;
+  } catch (e) {
+    console.error(e);
+  }
+}
+loadStats();
+
+/* ============================================================
+   TAB SWITCH
+============================================================ */
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(x => x.style.display = "none");
+    t.classList.add("active");
+    $(t.dataset.panel).style.display = "block";
+    if (t.dataset.panel !== "panel-scan") stopScan();
+  });
+});
+
+/* ============================================================
+   QR SCANNER
+============================================================ */
+async function startScan() {
+  try {
+    currentStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "environment" }
+    });
+    const video = $("video");
+    video.srcObject = currentStream;
+    await video.play();
+    $("qrReader").style.display = "block";
+    $("btnStartScan").style.display = "none";
+    $("btnStopScan").style.display = "flex";
+
+    const canvas = $("canvas");
+    const ctx = canvas.getContext("2d");
+
+    scanInterval = setInterval(() => {
+      if (video.readyState !== video.HAVE_ENOUGH_DATA) return;
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const code = jsQR(imageData.data, imageData.width, imageData.height);
+      if (code && code.data && code.data !== lastScanned) {
+        lastScanned = code.data;
+        handleQrPayload(code.data);
+      }
+    }, 300);
+  } catch (e) {
+    toast("Tidak dapat akses kamera: " + e.message, "error");
+  }
+}
+
+function stopScan() {
+  if (scanInterval) { clearInterval(scanInterval); scanInterval = null; }
+  if (currentStream) {
+    currentStream.getTracks().forEach(t => t.stop());
+    currentStream = null;
+  }
+  $("qrReader").style.display = "none";
+  $("btnStartScan").style.display = "flex";
+  $("btnStopScan").style.display = "none";
+}
+
+$("btnStartScan").addEventListener("click", startScan);
+$("btnStopScan").addEventListener("click", stopScan);
+
+function handleQrPayload(text) {
+  // Cari "Hash : xxxx" di payload QR
+  const match = text.match(/Hash\s*:\s*([a-fA-F0-9]{64})/);
+  if (match) {
+    stopScan();
+    verifyHash(match[1]);
+  } else {
+    toast("QR tidak dikenali sebagai ijazah Ijazah Chain.", "error");
+  }
+}
+
+/* ============================================================
+   VERIFY HASH
+============================================================ */
+async function verifyHash(hash) {
+  hash = (hash || "").trim();
+  if (!hash) { toast("Hash tidak boleh kosong.", "error"); return; }
+  showLoading();
+  try {
+    const r = await fetch(API + "/api/v1/verify/" + encodeURIComponent(hash));
+    const data = await r.json();
+    renderResult(data, "hash");
+  } catch (e) {
+    toast("Gagal verifikasi: " + e.message, "error");
+    hideLoading();
+  }
+}
+
+$("btnVerifyHash").addEventListener("click", () => verifyHash($("inputHash").value));
+$("inputHash").addEventListener("keypress", e => {
+  if (e.key === "Enter") verifyHash($("inputHash").value);
+});
+
+/* ============================================================
+   VERIFY NIM
+============================================================ */
+async function verifyNim(nim) {
+  nim = (nim || "").trim();
+  if (!nim) { toast("NIM tidak boleh kosong.", "error"); return; }
+  showLoading();
+  try {
+    const r = await fetch(API + "/api/v1/verify-nim/" + nim.split("/").map(encodeURIComponent).join("/"));
+    const data = await r.json();
+    renderNimResult(data);
+  } catch (e) {
+    toast("Gagal mencari: " + e.message, "error");
+    hideLoading();
+  }
+}
+
+$("btnVerifyNim").addEventListener("click", () => verifyNim($("inputNim").value));
+$("inputNim").addEventListener("keypress", e => {
+  if (e.key === "Enter") verifyNim($("inputNim").value);
+});
+
+/* ============================================================
+   RENDER HASIL
+============================================================ */
+function showLoading() {
+  $("result").style.display = "block";
+  $("result").innerHTML = `
+    <div class="result-card">
+      <div style="text-align:center;padding:30px;color:var(--muted)">
+        <div style="display:inline-block;width:24px;height:24px;border:3px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin 0.8s linear infinite"></div>
+        <p style="margin-top:12px">Memverifikasi...</p>
+      </div>
+      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    </div>
+  `;
+}
+
+function hideLoading() {
+  $("result").style.display = "none";
+}
+
+function escapeHtml(s) {
+  if (s == null) return "";
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function renderResult(data, mode) {
+  const container = $("result");
+  container.style.display = "block";
+
+  if (!data.found) {
+    container.innerHTML = `
+      <div class="result-card invalid">
+        <div class="result-header">
+          <div class="result-icon invalid">❌</div>
+          <div>
+            <div class="result-title invalid">IJAZAH TIDAK DITEMUKAN</div>
+            <div class="result-sub">Data tidak ada di ledger blockchain</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:13px">${escapeHtml(data.message || "Hash tidak ditemukan.")}</p>
+      </div>
+    `;
+    return;
+  }
+
+  const b = data.block || {};
+  const d = data.data || b.data || {};
+  const isValid = data.signature_valid || (data.message || "").includes("VALID") && !(data.message || "").includes("TIDAK");
+
+  container.innerHTML = `
+    <div class="result-card ${isValid ? 'valid' : 'invalid'}">
+      <div class="result-header">
+        <div class="result-icon ${isValid ? 'valid' : 'invalid'}">${isValid ? '✅' : '⚠️'}</div>
+        <div>
+          <div class="result-title ${isValid ? 'valid' : 'invalid'}">
+            ${isValid ? 'IJAZAH ASLI & TERVERIFIKASI' : 'PERINGATAN: TIDAK VALID'}
+          </div>
+          <div class="result-sub">Blok #${b.index || '?'} • ${escapeHtml(data.message || '')}</div>
+        </div>
+      </div>
+
+      <dl class="dl-grid">
+        <dt>Nama Lengkap</dt><dd><strong>${escapeHtml(d.nama || '-')}</strong></dd>
+        <dt>NIM</dt><dd class="mono">${escapeHtml(d.nim || '-')}</dd>
+        <dt>Program Studi</dt><dd>${escapeHtml(d.jurusan || '-')}</dd>
+        <dt>Fakultas</dt><dd>${escapeHtml(d.fakultas || '-')}</dd>
+        <dt>Gelar</dt><dd>${escapeHtml(d.gelar || '-')}</dd>
+        <dt>Institusi</dt><dd>${escapeHtml(d.institusi || '-')}</dd>
+        <dt>Tahun Lulus</dt><dd>${escapeHtml(d.tahun_lulus || '-')}</dd>
+        <dt>Tanggal Ijazah</dt><dd>${escapeHtml(d.tanggal || '-')}</dd>
+        <dt>Nomor Seri</dt><dd class="mono">${escapeHtml(d.nomor_seri || '-')}</dd>
+        <dt>Judul Skripsi</dt><dd>${escapeHtml(d.judul_skripsi || '-')}</dd>
+        <dt style="grid-column:1/-1;border-top:1px solid var(--border);padding-top:12px;margin-top:8px">Hash Blok</dt>
+        <dd class="mono" style="grid-column:1/-1">${escapeHtml(b.hash || '-')}</dd>
+        ${b.signature ? `
+          <dt style="grid-column:1/-1">Signature ECDSA</dt>
+          <dd class="mono" style="grid-column:1/-1;font-size:10px">${escapeHtml(b.signature.slice(0, 80))}...</dd>
+        ` : ''}
+      </dl>
+
+      <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+        <span class="badge ${isValid ? 'badge-green' : 'badge-red'}">
+          ${isValid ? '✓ Hash Valid' : '✗ Hash Invalid'}
+        </span>
+        ${b.signature ? `<span class="badge ${data.signature_valid ? 'badge-green' : 'badge-red'}">
+          ${data.signature_valid ? '✓ Signature Valid' : '✗ Signature Invalid'}
+        </span>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderNimResult(data) {
+  const container = $("result");
+  container.style.display = "block";
+
+  if (!data.found || data.count === 0) {
+    container.innerHTML = `
+      <div class="result-card invalid">
+        <div class="result-header">
+          <div class="result-icon invalid">❌</div>
+          <div>
+            <div class="result-title invalid">NIM TIDAK DITEMUKAN</div>
+            <div class="result-sub">${escapeHtml(data.message || '')}</div>
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const cards = data.certificates.map((b, i) => {
+    const d = b.data || {};
+    return `
+      <div class="result-card valid" style="margin-top:16px">
+        <div class="result-header">
+          <div class="result-icon valid">✅</div>
+          <div>
+            <div class="result-title valid">IJAZAH #${i + 1} VALID</div>
+            <div class="result-sub">Blok #${b.index} • ${escapeHtml(d.institusi || '')}</div>
+          </div>
+        </div>
+        <dl class="dl-grid">
+          <dt>Nama</dt><dd><strong>${escapeHtml(d.nama || '-')}</strong></dd>
+          <dt>NIM</dt><dd class="mono">${escapeHtml(d.nim || '-')}</dd>
+          <dt>Program Studi</dt><dd>${escapeHtml(d.jurusan || '-')}</dd>
+          <dt>Fakultas</dt><dd>${escapeHtml(d.fakultas || '-')}</dd>
+          <dt>Gelar</dt><dd>${escapeHtml(d.gelar || '-')}</dd>
+          <dt>Tanggal Ijazah</dt><dd>${escapeHtml(d.tanggal || '-')}</dd>
+          <dt>Hash</dt><dd class="mono" style="font-size:10px">${escapeHtml(b.hash)}</dd>
+        </dl>
+      </div>
+    `;
+  }).join("");
+
+  container.innerHTML = `
+    <div style="text-align:center;padding:16px 0">
+      <span class="badge badge-cyan">Ditemukan ${data.count} ijazah</span>
+    </div>
+    ${cards}
+  `;
+}
+
+/* ============================================================
+   AUTO-VERIFY DARI URL PARAM
+============================================================ */
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const h = params.get("hash");
+  const n = params.get("nim");
+  if (h) {
+    document.querySelector('[data-panel="panel-hash"]').click();
+    $("inputHash").value = h;
+    verifyHash(h);
+  } else if (n) {
+    document.querySelector('[data-panel="panel-nim"]').click();
+    $("inputNim").value = n;
+    verifyNim(n);
+  }
+});
+</script>
+</body>
+</html>

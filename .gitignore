@@ -1,0 +1,163 @@
+# ============================================================
+# IJAZAH CHAIN — .gitignore
+# ============================================================
+
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# ============ Virtual Environment ============
+ijazah_chain/
+venv/
+ENV/
+env/
+.venv/
+*.venv
+
+# ============ PyInstaller ============
+*.spec.bak
+dist/
+build/
+*.manifest
+
+# ============ Database (JANGAN commit data) ============
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ============ Crypto Keys (SANGAT PENTING!) ============
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+server/keys/
+server/backups/
+
+# ============ Ijazah PDF (Data Pribadi) ============
+arsip_ijazah/
+*.pdf
+!dokumentasi/*.pdf
+
+# ============ Backup ============
+backups/
+*.bak
+*.backup
+*.old
+*~
+
+# ============ File Temporer ============
+temp_qr.png
+*.tmp
+*.log
+*.pid
+
+# ============ IDE / Editor ============
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# ============ OS ============
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ============ Environment Variables ============
+.env
+.env.local
+.env.*.local
+*.env
+
+# ============ Logs ============
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============ Cache ============
+.cache/
+.cookies/
+*.pid
+*.seed
+*.pid.lock
+
+# ============ Node (kalau ada) ============
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ============ Jupyter Notebook ============
+.ipynb_checkpoints/
+
+# ============ Dokumentasi build ============
+site/
+docs/_build/
+
+# ============ Coverage ============
+htmlcov/
+.coverage*
+!.coveragerc
+
+# ============ Distribution ============
+*.tar.gz
+*.zip
+!requirements.txt
+
+# ============ Pribadi ============
+catatan_pribadi/
+todo.txt
+*.private
